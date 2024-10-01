@@ -1,0 +1,19 @@
+{
+  "name": "dates",
+  "version-string": "latest",
+  "builtin-baseline": "3508985146f1b1d248c67ead13f8f54be5b4f5da",
+  "dependencies": [
+    {
+      "name": "boost",
+      "version>=": "1.84.0"
+    },
+    {
+      "name": "wil",
+      "version>=": "2024-01-22"
+    },
+    {
+      "name": "cppwinrt",
+      "version>=": "2.0.240111.5"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+name: Build and Test
+
+on:
+  push
+
+jobs:
+  build_and_test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      # - uses: actions/cache@v4
+      - uses: lukka/get-cmake@v3.29.2
+      - uses: lukka/run-vcpkg@v11
+      - name: Run CMake Workflow
+        uses: lukka/run-cmake@v10
+        env:
+          CMAKE_TOOLCHAIN_FILE: "${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake"
+        with:
+          workflowPreset: 'x64-Debug-MSVC'
