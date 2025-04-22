@@ -1,6 +1,19 @@
-# Checks: '-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,modernize-*,performance-*,portability-*,readability-*'
+Checks: '
+  -*,
+  clang-analyzer-*,
+  concurrency-*,
+  cppcoreguidelines-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -readability-identifier-length,
+  -readability-else-after-return,
+  -readability-redundant-declaration,
+  -clang-analyzer-*
+'
 WarningsAsErrors: '*'
 FormatStyle: file
 HeaderFileExtensions: ['', 'h', 'hpp']
-HeaderFilterRegex: '*.\.h'
-ImplementationFileExtensions: ['cpp']
+HeaderFilterRegex: '.*\.h??$'
+ImplementationFileExtensions: ['cpp', 'cppm']

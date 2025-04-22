@@ -2,7 +2,8 @@
 
 Convert to and from Microsoft's `DATE` data type used in the `VARIANT` record as `VT_DATE`.
 
-![Build and Test](https://github.com/Patschkowski/dates/actions/workflows/build-and-test.yml/badge.svg)
+![Verify and Validate](https://github.com/patschkowski/dates/actions/workflows/verify-and-validate.yml/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Patschkowski_dates&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Patschkowski_dates)
 
 ## References
 
