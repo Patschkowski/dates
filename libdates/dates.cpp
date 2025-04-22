@@ -32,7 +32,7 @@ module dates;
 
 namespace dates {
 
-double to_variant_time(std::time_t time)
+auto to_variant_time(std::time_t time) -> double
 {
   const FILETIME ft{static_cast<FILETIME>(
     winrt::clock::to_file_time(winrt::clock::from_time_t(time)))};
@@ -45,7 +45,7 @@ double to_variant_time(std::time_t time)
   return vtime;
 }
 
-std::chrono::system_clock::time_point from_variant_time(double vtime)
+auto from_variant_time(double vtime) -> std::chrono::system_clock::time_point
 {
   FILETIME   ft;
   SYSTEMTIME st;

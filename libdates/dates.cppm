@@ -38,11 +38,12 @@ export namespace dates {
 /// @brief Convert from std::time_t to DATE.
 /// @param time Time since epoch.
 /// @return Variant time (DATE).
-LIBDATES_EXPORT double to_variant_time(std::time_t time);
+LIBDATES_EXPORT auto to_variant_time(std::time_t time) -> double;
 
 /// @brief Convert from DATE to a time_point.
 /// @param vtime Variant time (DATE).
 /// @return time point.
-LIBDATES_EXPORT std::chrono::system_clock::time_point from_variant_time(double vtime);
+LIBDATES_EXPORT auto from_variant_time(double vtime)
+  -> std::chrono::system_clock::time_point;
 
 }
