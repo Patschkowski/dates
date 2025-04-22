@@ -76,7 +76,7 @@
       "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror -pedantic -pedantic-errors -fmodules-ts -municode",
+        "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror -pedantic -pedantic-errors -fmodules-ts -D__nullptr=nullptr -D__is_literal=__is_literal_type",
         "CMAKE_CXX_COMPILER": "g++",
         "CMAKE_C_COMPILER": "gcc",
         "BUILD_DOC": "FALSE"

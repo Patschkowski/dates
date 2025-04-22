@@ -35,7 +35,8 @@ target_compile_features(libdates
     cxx_std_20)
 target_compile_definitions(libdates
   PUBLIC
-    _UNICODE)
+    _UNICODE
+    UNICODE)
 target_link_libraries(libdates
   PUBLIC
     WIL::WIL
