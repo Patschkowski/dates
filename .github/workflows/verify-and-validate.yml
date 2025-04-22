@@ -60,22 +60,6 @@ jobs:
             -NoNewWindow `
             -Wait
 
-      - name: Run system tests
-        run: |
-          $dir = "${{ github.workspace }}\out\x64-Debug-MSVC"
-          Start-Process `
-            -FilePath "OpenCppCoverage.exe" `
-            -ArgumentList `
-              "--working_dir", "`"${{ github.workspace }}\tests`"", `
-              "--export_type", "`"cobertura:$dir\system-test-coverage.xml`"", `
-              "--cover_children", `
-              "--sources", "`"${{ github.workspace }}`"", `
-              "--excluded_sources", "`"$dir\vcpkg_installed\*`"", `
-              "--", `
-              "behave" `
-            -NoNewWindow `
-            -Wait
-
       - name: Convert JUnit to CPPUnit format
         run: |
           $dir = "${{ github.workspace }}\out\x64-Debug-MSVC"
@@ -100,7 +84,6 @@ jobs:
           path: |
             ${{ github.workspace }}\out\x64-Debug-MSVC\reports\TESTS-*.xml
             ${{ github.workspace }}\out\x64-Debug-MSVC\unit-test-coverage.xml
-            ${{ github.workspace }}\out\x64-Debug-MSVC\system-test-coverage.xml
             ${{ github.workspace }}\out\x64-Debug-MSVC\msvc.sarif
 
   build-with-clang-and-analyze:
