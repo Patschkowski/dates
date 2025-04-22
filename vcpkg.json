@@ -14,6 +14,10 @@
     {
       "name": "cppwinrt",
       "version>=": "2.0.240111.5"
+    },
+    {
+      "name": "ms-gsl",
+      "version>=": "4.2.0"
     }
   ]
 }

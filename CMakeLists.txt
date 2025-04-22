@@ -14,6 +14,7 @@ include(GNUInstallDirs)
 
 find_package(wil CONFIG REQUIRED)
 find_package(cppwinrt CONFIG REQUIRED)
+find_package(Microsoft.GSL CONFIG REQUIRED)
 if(BUILD_TESTING)
   find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 endif()
@@ -39,6 +40,7 @@ target_compile_definitions(libdates
     UNICODE)
 target_link_libraries(libdates
   PUBLIC
+    Microsoft.GSL::GSL
     WIL::WIL
     Microsoft::CppWinRT)
 
