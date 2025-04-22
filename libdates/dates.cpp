@@ -37,7 +37,7 @@ auto to_variant_time(std::time_t time) -> double
   const FILETIME ft{static_cast<FILETIME>(
     winrt::clock::to_file_time(winrt::clock::from_time_t(time)))};
   SYSTEMTIME     st;
-  DOUBLE         vtime;
+  DOUBLE         vtime{0.0};
 
   THROW_LAST_ERROR_IF(!FileTimeToSystemTime(&ft, &st));
   THROW_IF_WIN32_BOOL_FALSE(SystemTimeToVariantTime(&st, &vtime));
