@@ -38,8 +38,10 @@ auto to_variant_time(std::time_t time) -> double
 {
   const FILETIME                  ft{static_cast<FILETIME>(
     winrt::clock::to_file_time(winrt::clock::from_time_t(time)))};
+  // NOLINTBEGIN(cppcoreguidelines-init-variables)
   GSL_SUPPRESS(type.5) SYSTEMTIME st;
   GSL_SUPPRESS(type.5) DOUBLE     vtime;
+  // NOLINTEND(cppcoreguidelines-init-variables)
 
   THROW_LAST_ERROR_IF(!FileTimeToSystemTime(&ft, &st));
   THROW_IF_WIN32_BOOL_FALSE(SystemTimeToVariantTime(&st, &vtime));
@@ -49,8 +51,10 @@ auto to_variant_time(std::time_t time) -> double
 
 auto from_variant_time(double vtime) -> std::chrono::system_clock::time_point
 {
+  // NOLINTBEGIN(cppcoreguidelines-init-variables)
   GSL_SUPPRESS(type.5) FILETIME   ft;
   GSL_SUPPRESS(type.5) SYSTEMTIME st;
+  // NOLINTEND(cppcoreguidelines-init-variables)
 
   THROW_IF_WIN32_BOOL_FALSE(VariantTimeToSystemTime(vtime, &st));
   THROW_LAST_ERROR_IF(!SystemTimeToFileTime(&st, &ft));
