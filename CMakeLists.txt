@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-project(DATES VERSION 0.1.0)
+project(libdates VERSION 0.1.0)
 
 option(BUILD_DOC "build documentation" OFF)
 
@@ -22,6 +22,10 @@ endif()
 if(BUILD_DOC)
   find_package(Doxygen)
 endif()
+
+set(libdates_INSTALL_CMAKEDIR
+  ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
+  CACHE STRING "Path to libdates cmake files")
 
 add_library(libdates)
 generate_export_header(libdates)
@@ -67,7 +71,7 @@ endif()
 configure_package_config_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libdatesConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
+  INSTALL_DESTINATION ${libdates_INSTALL_CMAKEDIR}
 )
 
 write_basic_package_version_file( 
@@ -79,24 +83,24 @@ install(TARGETS libdates
   EXPORT libdatesTargets
   RUNTIME
     DESTINATION ${CMAKE_INSTALL_BINDIR}
-    COMPONENT DATES_RunTime
+    COMPONENT libdates_RunTime
   LIBRARY
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT DATES_RunTime
-    NAMELINK_COMPONENT DATES_Development
+    COMPONENT libdates_RunTime
+    NAMELINK_COMPONENT libdates_Development
   ARCHIVE
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT DATES_Development
+    COMPONENT libdates_Development
   FILE_SET HEADERS
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   FILE_SET CXX_MODULES
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates/src
+    DESTINATION ${libdates_INSTALL_CMAKEDIR}/src
   INCLUDES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT libdatesTargets
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
+  DESTINATION ${libdates_INSTALL_CMAKEDIR}
   CXX_MODULES_DIRECTORY .)
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
   ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfigVersion.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates)
+  DESTINATION ${libdates_INSTALL_CMAKEDIR})
