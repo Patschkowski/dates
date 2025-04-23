@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-project(libdates VERSION 0.1.0)
+project(dates VERSION 0.1.0)
 
 option(BUILD_DOC "build documentation" OFF)
 
@@ -23,9 +23,9 @@ if(BUILD_DOC)
   find_package(Doxygen)
 endif()
 
-set(libdates_INSTALL_CMAKEDIR
-  ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
-  CACHE STRING "Path to libdates cmake files")
+set(dates_INSTALL_CMAKEDIR
+  ${CMAKE_INSTALL_LIBDIR}/cmake/dates
+  CACHE STRING "Path to dates cmake files")
 
 add_library(libdates)
 generate_export_header(libdates)
@@ -39,10 +39,6 @@ target_sources(libdates
 target_compile_features(libdates
   PUBLIC
     cxx_std_20)
-target_compile_definitions(libdates
-  PUBLIC
-    _UNICODE
-    UNICODE)
 target_link_libraries(libdates
   PUBLIC
     Microsoft.GSL::GSL
@@ -69,40 +65,40 @@ if(BUILD_DOC AND DOXYGEN_FOUND)
 endif()
 
 configure_package_config_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libdatesConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/datesConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/datesConfig.cmake
   INSTALL_DESTINATION ${libdates_INSTALL_CMAKEDIR}
 )
 
 write_basic_package_version_file( 
-  libdatesConfigVersion.cmake
+  datesConfigVersion.cmake
   COMPATIBILITY SameMajorVersion 
 )
 
 install(TARGETS libdates
-  EXPORT libdatesTargets
+  EXPORT datesTargets
   RUNTIME
     DESTINATION ${CMAKE_INSTALL_BINDIR}
-    COMPONENT libdates_RunTime
+    COMPONENT dates_RunTime
   LIBRARY
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT libdates_RunTime
-    NAMELINK_COMPONENT libdates_Development
+    COMPONENT dates_RunTime
+    NAMELINK_COMPONENT dates_Development
   ARCHIVE
     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    COMPONENT libdates_Development
+    COMPONENT dates_Development
   FILE_SET HEADERS
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   FILE_SET CXX_MODULES
-    DESTINATION ${libdates_INSTALL_CMAKEDIR}/src
+    DESTINATION ${dates_INSTALL_CMAKEDIR}/src
   INCLUDES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(EXPORT libdatesTargets
-  FILE libdatesTargets.cmake
-  DESTINATION ${libdates_INSTALL_CMAKEDIR}
-  NAMESPACE libdates::
+install(EXPORT datesTargets
+  FILE datesTargets.cmake
+  DESTINATION ${dates_INSTALL_CMAKEDIR}
+  NAMESPACE dates::
   CXX_MODULES_DIRECTORY .)
 install(FILES
-  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
-  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfigVersion.cmake
-  DESTINATION ${libdates_INSTALL_CMAKEDIR})
+  ${CMAKE_CURRENT_BINARY_DIR}/datesConfig.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/datesConfigVersion.cmake
+  DESTINATION ${dates_INSTALL_CMAKEDIR})
