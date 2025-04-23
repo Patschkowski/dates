@@ -98,7 +98,9 @@ install(TARGETS libdates
   INCLUDES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(EXPORT libdatesTargets
+  FILE libdatesTargets.cmake
   DESTINATION ${libdates_INSTALL_CMAKEDIR}
+  NAMESPACE libdates::
   CXX_MODULES_DIRECTORY .)
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
