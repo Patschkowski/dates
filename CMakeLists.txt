@@ -67,7 +67,7 @@ endif()
 configure_package_config_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/datesConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/datesConfig.cmake
-  INSTALL_DESTINATION ${libdates_INSTALL_CMAKEDIR}
+  INSTALL_DESTINATION ${dates_INSTALL_CMAKEDIR}
 )
 
 write_basic_package_version_file( 
