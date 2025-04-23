@@ -64,6 +64,12 @@ if(BUILD_DOC AND DOXYGEN_FOUND)
   doxygen_add_docs(doxygen ${CMAKE_CURRENT_SOURCE_DIR} ALL)
 endif()
 
+configure_package_config_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/libdatesConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
+)
+
 write_basic_package_version_file( 
   libdatesConfigVersion.cmake
   COMPATIBILITY SameMajorVersion 
@@ -90,5 +96,7 @@ install(TARGETS libdates
 install(EXPORT libdatesTargets
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
   CXX_MODULES_DIRECTORY .)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfigVersion.cmake
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfig.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/libdatesConfigVersion.cmake
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates)
