@@ -67,13 +67,11 @@ endif()
 configure_package_config_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/cmake/datesConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/datesConfig.cmake
-  INSTALL_DESTINATION ${dates_INSTALL_CMAKEDIR}
-)
+  INSTALL_DESTINATION ${dates_INSTALL_CMAKEDIR})
 
 write_basic_package_version_file( 
   datesConfigVersion.cmake
-  COMPATIBILITY SameMajorVersion 
-)
+  COMPATIBILITY SameMajorVersion)
 
 install(TARGETS libdates
   EXPORT datesTargets
@@ -96,8 +94,7 @@ install(TARGETS libdates
 install(EXPORT datesTargets
   DESTINATION ${dates_INSTALL_CMAKEDIR}
   NAMESPACE dates::
-  CXX_MODULES_DIRECTORY .
-  EXPORT_PACKAGE_DEPENDENCIES)
+  CXX_MODULES_DIRECTORY .)
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/datesConfig.cmake
   ${CMAKE_CURRENT_BINARY_DIR}/datesConfigVersion.cmake
