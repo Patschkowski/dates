@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-project(DATES)
+project(DATES VERSION 0.1.0)
 
 option(BUILD_DOC "build documentation" OFF)
 
@@ -11,6 +11,7 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN TRUE)
 include(CTest)
 include(GenerateExportHeader)
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers) 
 
 find_package(wil CONFIG REQUIRED)
 find_package(cppwinrt CONFIG REQUIRED)
@@ -63,8 +64,13 @@ if(BUILD_DOC AND DOXYGEN_FOUND)
   doxygen_add_docs(doxygen ${CMAKE_CURRENT_SOURCE_DIR} ALL)
 endif()
 
+write_basic_package_version_file( 
+  libdatesConfigVersion.cmake
+  COMPATIBILITY SameMajorVersion 
+)
+
 install(TARGETS libdates
-  EXPORT libdates-targets
+  EXPORT libdatesTargets
   RUNTIME
     DESTINATION ${CMAKE_INSTALL_BINDIR}
     COMPONENT DATES_RunTime
@@ -81,8 +87,8 @@ install(TARGETS libdates
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates/src
   INCLUDES
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-install(EXPORT libdates-targets
+install(EXPORT libdatesTargets
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates
   CXX_MODULES_DIRECTORY .)
-install(FILES libdates-config.cmake
+install(FILES libdatesConfigVersion.cmake
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/libdates)
